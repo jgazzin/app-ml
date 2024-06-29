@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lacour Martina</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/cdd189729f.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/ico-pro.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <div class="container header">
+            <h1>Lacour<span>Martina</span></h1>
+            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="titulo m-top">
+            <i class="fa-solid fa-location-pin"></i>
+            <h2>registros</h2>
+        </div>
+
+        <section class="medios">
+            <div class="head">
+                <div class="titulo">
+                    <i class="fa-solid fa-location-pin"></i>
+                    <h3>Publicaciones en medios</h3>
+                </div>
+                <div class="botones">
+                    <button type="submit" class="btn primary mostrar"> mostrar</button>
+                    <button type="submit" class="btn primary nuevo">+ Nueva</button>
+                </div>
+            </div>
+
+            <form class="nuevo_item hidden">
+                <input type="date" class="fecha" name="fecha">
+                <input type="text" class="medio" name="medio" placeholder="Medio">
+                <input type="text" class="tema" name="tema" placeholder="Tema">
+                <input type="text" class="enlace" name="enlace" placeholder="Link">
+                <button class="btn guardar" data-id="idNota">Guardar</button>
+            </form>
+
+
+            <div class="contenido hidden">
+                <div class="t-row">
+                    <p>fecha</p>
+                    <p>medio</p>
+                    <p>tema</p>
+                    <p>enlace</p>
+                </div>
+                <div class="contenido_items">
+                    <!-- <div class="row">
+                        <p>25/06/2024</p>
+                        <p class="title auto-h">
+                            Un proyecto que busca fortalecer el Sistema Judicial para Proteger a la Sociedad y a las Víctimas
+                        </p>
+                        <p>reiterancia</p>
+                        <a href="#">click para ver</a>
+                        <button class="btn eliminar" data-id="idNota">eliminar</button>
+                    </div> -->
+
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="redes">
+            <div class="head">
+                <div class="titulo">
+                    <i class="fa-solid fa-location-pin"></i>
+                    <h3>Publicaciones en medios</h3>
+                </div>
+                <div class="botones">
+                    <button type="submit" class="btn primary mostrar"> mostrar</button>
+                    <button type="submit" class="btn primary nuevo">+ Nueva</button>
+                </div>
+            </div>
+
+            <form class="nuevo_item hidden">
+                <input type="date" class="fecha" name="fecha">
+                <input type="text" class="medio" name="medio" placeholder="Medio">
+                <input type="text" class="tema" name="tema" placeholder="Tema">
+                <input type="text" class="enlace" name="enlace" placeholder="Link">
+                <button class="btn guardar" data-id="idNota">Guardar</button>
+            </form>
+
+            <div class="contenido hidden">
+                <div class="t-row">
+                    <p>fecha</p>
+                    <p>Medio</p>
+                    <p>tema</p>
+                    <p>enlace</p>
+                </div>
+                <div class="contenido_items">
+                    <!-- <div class="row">
+                        <p>25/06/2024</p>
+                        <p class="title auto-h">
+                            Un proyecto que busca fortalecer el Sistema Judicial para Proteger a la Sociedad y a las Víctimas
+                        </p>
+                        <p>reiterancia</p>
+                        <a href="#">click para ver</a>
+                        <div class="botones">
+                            <button class="btn editar" data-id="idNota">Editar</button>
+                            <button class="btn eliminar" data-id="idNota">eliminar</button>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copy">&copy;<span class="date"></span> · JGDisenio</span></p>
+        </div>
+    </footer>
+
+</body>
+
+<script src="js/app.js"></script>
+
+</html>
