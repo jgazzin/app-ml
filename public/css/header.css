@@ -1,16 +1,94 @@
 header{
-    background-color: var(--color-ppal);
-    position: fixed;
-    top: 0;
+    background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/sesion-ml.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
+    height: var(--nav-h);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: var(--nav-h);
-
-    span{
-        font-weight: 400;
-    }
+    padding: 1rem 0;
+    color: var(--color-negativo);
 }
+header .header h2{
+    color: var(--color-ppal);
+    cursor: pointer;
+}
+.header span{
+    font-weight: 400;
+    color: var(--color-negativo);
+}
+
+.header i{
+    cursor: pointer;
+}
+
+.bloque{
+    color: var(--color-negativo);
+    padding: 16px 0;
+}
+.bloque p{
+    text-transform: uppercase;
+}
+.bloque p:first-of-type{
+    font-weight: bold;
+}
+
+.tabla{
+    color: var(--color-negativo);
+    text-align: center;
+}
+
+.encabezado, .contenido{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.encabezado{
+    text-transform: uppercase;
+    border: 2px solid var(--color-negativo);
+    border-radius: 4px;
+}
+
+.search_nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.temas,
+.areas{
+    width: 45%;
+}
+
+#temas option,
+#areas option {
+    text-transform: uppercase;
+}
+
+.temas select,
+.areas select{
+    width: 100%;
+    padding: 4px;
+    border: 1px solid var(--color-complemento);
+    border-radius: 4px;
+}
+
+
+@media (max-width: 576px) {
+    header{
+        padding-top: 1rem;
+    }
+
+}
+

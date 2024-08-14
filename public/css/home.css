@@ -1,50 +1,228 @@
-.head{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.datos {
+display: grid;
+grid-template-columns: 5fr 1fr;
+gap: 16px;
+padding-bottom: 8px;
+}
+
+
+.border-btn{
+border-bottom: 1px solid var(--color-complemento);
+
+}
+.botones{
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+gap: 8px;
+}
+
+.headline {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.headline i{
+cursor: pointer;
+}
+
+.verMas:hover{
+transform: scale(1.05);
+}
+
+.tag{
+padding: 4px 8px;
+background-color: var(--color-ppal);
+color: var(--color-negativo);
+font-weight: bold;
+text-align: center;
+border-radius: 8px;
+text-transform: uppercase;
+}
+
+@media (max-width: 576px) {
+.datos{
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+.botones{
+    flex-direction: row;
+    gap: 16px;
+}
+.warning{
+    grid-column: 1/2;
+}
 
 }
 
-.t-row, .row, .nuevo_item{
+.iconos-eventos,
+.botons-check{
+    color: var(--color-complemento);
+    display: flex;
+    gap: 1rem;
+    
+}
+.iconos-eventos i:hover{
+    cursor: pointer;
+    text-shadow: var(--shadow);
+}
+
+.filtros-buscar, .settings{
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.eventos div{
+    width: 100%;
+}
+
+.settings .crear{
+    display: grid;
+    grid-template-columns: 7fr 0.5fr;
+    gap: 10px;
     align-items: center;
-    padding: 4px 0;
+}
+.settings .botons-check{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* cards proyectos */
+.border-btn:last-of-type{
+    border: none;
+}
+.proyectos_propios{
+    display: flex;
+    flex-direction: column;
     gap: 4px;
 }
-.t-row p {
-    text-align: center;
-    text-transform: uppercase;
+.card {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 8px 0;
+    gap: 16px;
+}
+
+.card_left,
+.card_right{
     font-weight: bold;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
 }
 
-.t-row{
-    border-bottom: 2px solid grey;
+.estado {
+    background-color: var(--color-complemento);
+    color: #fff;
+    padding: 4px;
+    border-radius: 8px;
 }
 
-.nuevo_item input{
-    padding: 2px;
-    border: 1px solid grey;
+.soloLogin {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+@media (max-width: 576px) {
+    .card{
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    } 
+    .card_centro{
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+    .filtros-buscar, .settings{
+        grid-template-columns: 1fr;
+    }
+}
+
+.hitos .item{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.item p{
+    text-align: left;
+}
+main{
+    padding-bottom: 2rem;
+}
+
+.anclas{
+    color: var(--color-complemento);
+    display: flex;
+    gap: 2rem;
+}
+@media (max-width: 576px) {
+    .anclas{
+        flex-direction: column;
+        align-items: left;
+        gap: 0.5rem;
+    }
+
+}
+.link-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hidden{
+    display: none;
+  }
+
+/* ---  FORM CREAR PROYECTO -- */
+.form_proyectos {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    margin-bottom: 16px;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+fieldset div >*{
+    width: 100%;
+}
+
+label{
+    text-transform: uppercase;
+    font-size: 10px;
+    padding-bottom: 4px;
+    color: var(--color-complemento);
+}
+
+input,
+select,
+textarea{
+    padding: 8px;
+    outline: none;
+    border: 1px solid var(--color-complemento);
     border-radius: 4px;
 }
 
 @media (max-width: 576px) {
-    .head{
-        flex-direction: column;
+    .form_proyectos {
+        grid-template-columns: 1fr;
     }
 
-    .t-row{
-        display: none;
+    .form_proyectos .botones,
+    .form_hitos .botones{
+        margin-top: 16px;
     }
-    .row, .nuevo_item{
-        grid-template-columns: 1fr 1fr;
-        text-align: center;
-    }
-    .row .btn,
-    .nuevo_item .btn {
-        grid-column: 1 / 3;
-        grid-row: 3 / 4;
-        width: 100%;
-    }
-
+    
 }

@@ -1,11 +1,54 @@
 .copy{
     padding: 2px;
     text-align: center;
+    color: var(--color-negativo);
+    margin-top: 2rem;
 }
 
 footer{
     background-color: var(--color-ppal);
-    position: fixed;
-    bottom: 0;
+    box-shadow: 2px -2px 5px -1px var(--color-complemento);
     width: 100%;
+    position: relative;
+    padding-top: 36px;
+    margin-top: 2rem;
 }
+
+footer h2{
+    color: var(--colo-negativo);
+}
+
+.social{
+    display: flex;
+    gap: 1rem;
+}
+
+
+.btn-arriba {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    display: grid;
+    place-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid var(--color-complemento);
+    color: var(--color-complemento);
+
+    position: absolute;
+    top: -24px;
+    right: 10%;
+  }
+
+  .btn-arriba:hover {
+    box-shadow: var(--shadow);
+  }
+
+  .btn-arriba i {
+    margin-bottom: 2px;
+  }
+  @media (max-width: 576px) {
+      .btn-arriba{
+        right: 16px;
+      }
+  }

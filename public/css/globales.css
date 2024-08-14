@@ -1,13 +1,14 @@
 :root {
-  --color-ppal:  #ffd000;
-  --color-complemento: #7a7a7a;
-  --color-destaque: #393466;
-  --color-texto: #121118;
-  --color-negativo: #fff;
-  --color-verde: rgb(0, 70, 0);
+  --color-ppal:  #F5AC0D;
+  --color-complemento: #69686A;
+  --color-destaque: #72D1EC;
+  --color-gris: rgb(66, 65, 67);
+  --color-negativo: #f3f3f3;
+  --color-texto: #1a1a1a;
 
-  --nav-h:80px;
-  --shadow: 2px 2px 5px rgb(119, 119, 119);
+
+  --nav-h:400px;
+  --shadow: 2px 2px 5px rgb(66, 65, 67);
 }
   
   
@@ -21,7 +22,6 @@ h1, h2, h3, h4, p {
   padding: 0;
 }
 h1 {
-    font-family: "Acme", sans-serif;
     font-size: 28px;
     text-transform: capitalize;
 }
@@ -49,20 +49,12 @@ img {
   width: 100%;
 }
 
-button, i {
-  cursor: pointer;
-}
-
 input{
   width: 100%;
 }
 
 section{
   padding: 1rem 0;
-}
-
-.hidden{
-  display: none;
 }
 
 /* utilitarios */
@@ -79,23 +71,24 @@ section{
 }
 
 .btn {
-  width: 100px;
-  padding: 10px 0;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 16px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  margin: 2px;
+  width: 100%;
+
 }
 
 .primary{
-  background-color: var(--color-destaque);
-  border: 1px solid var(--color-destaque);
+  background-color: var(--color-ppal);
+  border: 1px solid var(--color-ppal);
   color: var(--color-negativo);
 }
 
-.eliminar {
+.eliminar,
+.cancelar {
   background-color: transparent;
   border: 2px solid tomato;
   color: tomato;
@@ -107,8 +100,34 @@ section{
 }
 .guardar{
   background-color: transparent;
-  border: 2px solid var(--color-verde);
-  color: var(--color-verde);
+  border: 2px solid green;
+  color: green;
+}
+
+.check {
+  border: 2px solid gray;
+  background-color: transparent;
+  transform: scale(0.8);
+  color: var(--color-complemento);
+}
+
+.warning{
+  padding: 4px 8px;
+  background-color: tomato;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  grid-column: 2/4;
+}
+.success{
+  padding: 4px 8px;
+  background-color: green;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  grid-column: 2/4;
 }
 .btn:hover {
   box-shadow: var(--shadow);
@@ -119,13 +138,6 @@ section{
   align-items: center;
   justify-content: start;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.5rem 0;
   text-transform: uppercase;
-}
-.m-top{
-  margin-top: var(--nav-h);
-}
-
-.hidden{
-  display: none;
 }

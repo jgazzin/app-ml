@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martina Lacour</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/cdd189729f.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/ico-pro.png" type="image/png">
+   
+</head>
+
+<body>
+    <header id="inicio">
+        <div class="container header">
+            <h2>Lacour<span> Martina</span></h2>
+            <a href="index.html">
+                <i class="fa-solid fa-right-to-bracket fa-xl" id="login"></i>
+            </a>
+        </div>
+
+        <div class="container cuadro_resumen">
+            <div>
+                <div class="bloque">
+                    <p>legisladora rio negro</p>
+                    <p>Bloque PRO Unión Republicana</p>
+                </div>
+                
+                <div class="tabla">
+                    <div class="encabezado">
+                        <p>sesiones</p>
+                        <p>proyectos propios</p>
+                    </div>
+                    <div class="contenido">
+                        <p class="sesiones"></p>
+                        <p id="countProyectos"></p>
+                    </div>
+                </div>
+                <div class="tabla">
+                    <div class="encabezado">
+                        <p>proyectos de bloque</p>
+                        <p>prensa</p>
+                    </div>
+                    <div class="contenido">
+                        <p class="bloque">76</p>
+                        <p id="countPrensa"></p>
+                    </div>
+
+                </div>      
+        </div>
+    </header>
+    <main class="container">
+        <div class="titulo m-top">
+            <i class="fa-solid fa-landmark fa-xl"></i>
+            <h3>Edición de registros</h3>
+        </div>
+
+        <div class="search_nav">
+            <div class="anclas">
+                <a href="#proyectos">Proyectos propios</a>
+                <a href="#hitos">Hitos relevantes</a>
+                <a href="#prensa">En medios</a>
+            </div>
+
+            <div class="iconos-eventos">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                <i class="fa-solid fa-gear fa-xl"></i>
+            </div>
+
+        </div>
+
+        <div class="eventos">
+            <div class="filtros-buscar">
+                <script src="js/settings.js"></script>
+                <div class="temas">
+                    <label for="temas">Filtrar por tema</label>
+                    <select name="tema" id="temas">
+                        <option value="" selected>todos</option>
+
+                    </select>
+        
+                </div>
+                <div class="areas">
+                    <label for="areas">Filtrar por Area</label>
+                    <select name="area" id="areas">
+                        <option value="" selected>todos</option>
+
+                    </select>
+        
+                </div>
+        
+            </div>
+
+            <div class="settings hidden">
+                <div>
+                    <label for="crear-tema">Tema Nuevo</label>
+                    <div  class="crear tema">
+                        <input type="text" id="crear-tema" name="crear-tema">
+                        <button class="btn guardar">guardar</button>
+
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="crear-area">Área Nueva</label>
+                    <div  class="crear area">
+                        <input type="text" id="crear-area" name="crear-area">
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="num-sesiones">Cantidad sesiones</label>
+                    <div  class="crear">
+                        <input type="number" id="num-sesiones" name="num-sesiones">
+                        <button class="btn guardar">guardar</button>
+
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="num-bloque">Proyectos bloque</label>
+                    <div  class="crear">
+                        <input type="number" id="num-bloque" name="num-bloque">
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="datos">
+            <div class="headline" id="proyectos">
+                <div class="titulo">
+                    <i class="fa-solid fa-sheet-plastic fa-lg"></i>
+                    <h3>Proyectos propios</h3>
+                </div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+            <div class="botones">
+                <button class="btn primary">+ nuevo</button>
+            </div>
+
+        </div>
+
+        <!-- FORM CREAR PROYECTO -->
+        <div class="hidden">
+            <form action="" class="form_proyectos">
+                <fieldset>
+                    <div>
+                        <label for="proy-numero">nº proyecto</label>
+                        <input type="text" id="proy-numero" name="proy-numero">
+                    </div>
+                    <div>
+                        <label for="proy-enlace">enlace</label>
+                        <input type="text" id="proy-enlace" name="proy-enlace">
+                    </div>
+                    <div>
+                        <label for="proy-fecha">fecha</label>
+                        <input type="date" id="proy-fecha" name="proy-fecha">
+                    </div>
+                    <div>
+                        <label for="proy-estado">estado</label>
+                        <select name="proy-estado" id="proy-estado">
+                            <option value="presentado">presentado</option>
+                            <option value="tratamiento">en tratamiento</option>
+                            <option value="aprobado">aprobado</option>
+                            <option value="rechazado">rechazado</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="proy-detalle">Detalle</label>
+                        <textarea name="proy-detalle" id="proy-detalle" rows="10"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="proy-areas">área</label>
+                        <input type="text" id="proy-areas" name="proy-areas">
+                    </div>
+                    <div>
+                        <label for="proy-tema">tema</label>
+                        <select name="proy-tema" id="proy-tema">
+                            <option value="" disabled>Elegir o crear</option>
+                            <option value="tema 1">tema 1</option>
+                            <option value="tema 2">tema 2</option>
+                            <option value="tema 3">tema 3</option>
+                            <option value="tema 4">tema 4</option>
+                        </select>
+                    </div>
+                    <div class="botones">
+                        <button class="btn cancelar">cancelar</button>
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                </fieldset>
+
+                <p class="alerta"></p>  
+            </form>
+        </div>
+
+        <div class="proyectos_propios">
+            <!-- desde JS -->
+        </div>
+        
+        <div class="datos">
+            <div class="headline" id="hitos">
+                <div class="titulo">
+                    <i class="fa-solid fa-location-pin fa-lg"></i>
+                    <h3>Hitos relevantes</h3>
+                </div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+            <div class="botones">
+                <button class="btn primary">+ nuevo</button>
+            </div>
+
+        </div>
+
+        <!-- FORM CREAR HITOS - ** ADAPTAR -->
+        <div class="hidden">
+            <form action="" class="form_hitos">
+                <fieldset>
+                    <div>
+                        <label for="hitos-numero">nº proyecto</label>
+                        <input type="text" id="hitos-numero">
+                    </div>
+                    <div>
+                        <label for="hitos-enlace">enlace</label>
+                        <input type="text" id="hitos-enlace">
+                    </div>
+                    <div>
+                        <label for="hitos-fecha">fecha</label>
+                        <input type="date" id="hitos-fecha">
+                    </div>
+                    <div>
+                        <label for="hitos-estado">estado</label>
+                        <select name="hitos-estado" id="hitos-estado">
+                            <option value="presentado">presentado</option>
+                            <option value="tratamiento">en tratamiento</option>
+                            <option value="aprobado">aprobado</option>
+                            <option value="rechazado">rechazado</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="hitos-detalle">Detalle</label>
+                        <textarea name="hitos-detalle" id="hitos-detalle" rows="10"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="hitos-areas">área</label>
+                        <input type="text" id="proy-areas">
+                    </div>
+                    <div>
+                        <label for="hitos-estado">tema</label>
+                        <select name="hitos-tema" id="hitos-tema">
+                            <option value="tema 1">tema 1</option>
+                            <option value="tema 2">tema 2</option>
+                            <option value="tema 3">tema 3</option>
+                            <option value="tema 4">tema 4</option>
+                        </select>
+                    </div>
+    
+                    <div class="botones">
+                        <button class="btn eliminar">cancelar</button>
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="hitos">
+            <!-- desde JS -->
+        </div>
+
+        <div class="headline" id="prensa">
+            <div class="titulo">
+                <i class="fa-solid fa-newspaper fa-lg"></i>
+                <h3>Notas en medios</h3>
+            </div>
+            <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+        </div>
+
+        <div class="prensa">
+
+        </div>
+
+
+    </main>
+
+    <footer>
+        <div class="container header">
+            <h2>Lacour<span> Martina</span></h2>
+            <div class="social">
+                <a href="https://www.facebook.com/lacourmartina">
+                <i class="fa-brands fa-facebook fa-2xl"></i></a>
+                <a href="https://www.instagram.com/lacourmartina">
+                <i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                <a href="https://www.x.com/lacourmartina">
+                <i class="fa-brands fa-twitter fa-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/martina-valeria-lacour-594ab257/"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+            </div>
+        </div>
+
+        <div class="btn-arriba">
+            <a href="#inicio">
+                <i class="fa-solid fa-angle-up fa-2xl"></i>
+            </a>
+        </div>
+
+        <div class="container">
+            <p class="copy">&copy;<span class="date"></span> · JGDisenio</span></p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+
+</html>

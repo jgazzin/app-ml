@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lacour Martina</title>
+    <title>Martina Lacour</title>
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,128 +12,174 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/home.css">
 
     <!-- icons -->
     <script src="https://kit.fontawesome.com/cdd189729f.js" crossorigin="anonymous"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/ico-pro.png" type="image/png">
+   
 </head>
 
 <body>
-    <header>
+    <header id="inicio">
         <div class="container header">
-            <h1>Lacour<span>Martina</span></h1>
-            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+            <h2>Lacour<span> Martina</span></h2>
+            <a href="registro.html">
+                <i class="fa-solid fa-right-to-bracket fa-xl" id="login"></i>
+            </a>
+            
+        </div>
+
+        <div class="container cuadro_resumen">
+            <div>
+                <div class="bloque">
+                    <p>legisladora rio negro</p>
+                    <p>Bloque PRO Unión Republicana</p>
+                </div>
+                
+                <div class="tabla">
+                    <div class="encabezado">
+                        <p>sesiones</p>
+                        <p>proyectos propios</p>
+                    </div>
+                    <div class="contenido">
+                        <p class="sesiones"></p>
+                        <p id="countProyectos"></p>
+                    </div>
+                </div>
+                <div class="tabla">
+                    <div class="encabezado">
+                        <p>proyectos de bloque</p>
+                        <p>prensa</p>
+                    </div>
+                    <div class="contenido">
+                        <p class="bloque"></p>
+                        <p id="countPrensa"></p>
+                    </div>
+
+                </div>      
         </div>
     </header>
-
     <main class="container">
         <div class="titulo m-top">
-            <i class="fa-solid fa-location-pin"></i>
-            <h2>registros</h2>
+            <i class="fa-solid fa-landmark fa-xl"></i>
+            <h3>informe de gestión</h3>
         </div>
 
-        <section class="medios">
-            <div class="head">
-                <div class="titulo">
-                    <i class="fa-solid fa-location-pin"></i>
-                    <h3>Publicaciones en medios</h3>
-                </div>
-                <div class="botones">
-                    <button type="submit" class="btn primary mostrar"> mostrar</button>
-                    <button type="submit" class="btn primary nuevo">+ Nueva</button>
-                </div>
+        <div class="search_nav">
+            <div class="anclas">
+                <a href="#proyectos">Proyectos propios</a>
+                <a href="#hitos">Hitos relevantes</a>
+                <a href="#prensa">En medios</a>
             </div>
 
-            <form class="nuevo_item hidden">
-                <input type="date" class="fecha" name="fecha">
-                <input type="text" class="medio" name="medio" placeholder="Medio">
-                <input type="text" class="tema" name="tema" placeholder="Tema">
-                <input type="text" class="enlace" name="enlace" placeholder="Link">
-                <button class="btn guardar" data-id="idNota">Guardar</button>
-            </form>
-
-
-            <div class="contenido hidden">
-                <div class="t-row">
-                    <p>fecha</p>
-                    <p>medio</p>
-                    <p>tema</p>
-                    <p>enlace</p>
-                </div>
-                <div class="contenido_items">
-                    <!-- <div class="row">
-                        <p>25/06/2024</p>
-                        <p class="title auto-h">
-                            Un proyecto que busca fortalecer el Sistema Judicial para Proteger a la Sociedad y a las Víctimas
-                        </p>
-                        <p>reiterancia</p>
-                        <a href="#">click para ver</a>
-                        <button class="btn eliminar" data-id="idNota">eliminar</button>
-                    </div> -->
-
-                </div>
-            </div>
-            
-        </section>
-
-        <section class="redes">
-            <div class="head">
-                <div class="titulo">
-                    <i class="fa-solid fa-location-pin"></i>
-                    <h3>Publicaciones en medios</h3>
-                </div>
-                <div class="botones">
-                    <button type="submit" class="btn primary mostrar"> mostrar</button>
-                    <button type="submit" class="btn primary nuevo">+ Nueva</button>
-                </div>
+            <div class="iconos-eventos">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
             </div>
 
-            <form class="nuevo_item hidden">
-                <input type="date" class="fecha" name="fecha">
-                <input type="text" class="medio" name="medio" placeholder="Medio">
-                <input type="text" class="tema" name="tema" placeholder="Tema">
-                <input type="text" class="enlace" name="enlace" placeholder="Link">
-                <button class="btn guardar" data-id="idNota">Guardar</button>
-            </form>
+        </div>
 
-            <div class="contenido hidden">
-                <div class="t-row">
-                    <p>fecha</p>
-                    <p>Medio</p>
-                    <p>tema</p>
-                    <p>enlace</p>
-                </div>
-                <div class="contenido_items">
-                    <!-- <div class="row">
-                        <p>25/06/2024</p>
-                        <p class="title auto-h">
-                            Un proyecto que busca fortalecer el Sistema Judicial para Proteger a la Sociedad y a las Víctimas
-                        </p>
-                        <p>reiterancia</p>
-                        <a href="#">click para ver</a>
-                        <div class="botones">
-                            <button class="btn editar" data-id="idNota">Editar</button>
-                            <button class="btn eliminar" data-id="idNota">eliminar</button>
-                        </div>
-                    </div> -->
+        <div class="eventos">
+            <div class="filtros-buscar">
+                <script src="js/settings.js"></script>
 
+                <div class="temas">
+                    <label for="temas">Filtrar por tema</label>
+                    <select name="tema" id="temas">
+                        <option value="" selected>todos</option>
+
+                    </select>
+        
                 </div>
+                <div class="areas">
+                    <label for="areas">Filtrar por Area</label>
+                    <select name="area" id="areas">
+                        <option value="" selected>todos</option>
+
+                    </select>
+        
+                </div>
+        
             </div>
-            
-        </section>
+
+        </div>
+
+        <div class="headline" id="proyectos">
+            <div class="titulo">
+                <i class="fa-solid fa-sheet-plastic fa-lg"></i>
+                <h3>Proyectos propios</h3>
+            </div>
+            <div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+        </div>
+
+        <div></div>
+        <div class="proyectos_propios">
+            <script src="js/proyectos.js"></script>
+        </div>
+
+        <div class="headline" id="hitos">
+            <div class="titulo">
+                <i class="fa-solid fa-location-pin fa-lg"></i>
+                <h3>Hitos relevantes</h3>
+            </div>
+            <div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+        </div>
+
+        <div></div>
+        <div class="hitos">
+            <script src="js/hitos.js"></script>
+        </div>
+
+        <div class="headline" id="prensa">
+            <div class="titulo">
+                <i class="fa-solid fa-newspaper fa-lg"></i>
+                <h3>Notas en medios</h3>
+            </div>
+            <div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+        </div>
+
+        <div></div>
+        <div class="prensa">
+            <script src="js/prensa.js"></script>
+        </div>
+
+
     </main>
 
     <footer>
+        <div class="container header">
+            <h2>Lacour<span> Martina</span></h2>
+            <div class="social">
+                <a href="https://www.facebook.com/lacourmartina">
+                <i class="fa-brands fa-facebook fa-2xl"></i></a>
+                <a href="https://www.instagram.com/lacourmartina">
+                <i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                <a href="https://www.x.com/lacourmartina">
+                <i class="fa-brands fa-twitter fa-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/martina-valeria-lacour-594ab257/"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+            </div>
+        </div>
+
+        <div class="btn-arriba">
+            <a href="#inicio">
+                <i class="fa-solid fa-angle-up fa-2xl"></i>
+            </a>
+        </div>
+
         <div class="container">
             <p class="copy">&copy;<span class="date"></span> · JGDisenio</span></p>
         </div>
     </footer>
-
+    <script src="js/app.js"></script>
 </body>
-
-<script src="js/app.js"></script>
 
 </html>
