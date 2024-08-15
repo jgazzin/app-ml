@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', ()=>{
-    
+document.addEventListener('DOMContentLoaded', ()=>{ 
     completarSelect('temas')
     completarSelect('areas')
 })

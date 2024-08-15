@@ -360,11 +360,11 @@ function imprimirPrensa(listado) {
 
     listado.forEach(nota =>{
         const card = document.createElement('div')
-        card.classList.add('card')
+        card.classList.add('card', 'border-btn')
         card.innerHTML= `
         <div class="card_left">
             <p>${nota.fecha}</p>
-            <p>${nota.medio}</p>
+            <p class="estado">${nota.medio}</p>
         </div>
         <div class="card_centro">
             <p class="title">

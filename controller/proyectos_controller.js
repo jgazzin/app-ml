@@ -46,10 +46,10 @@ const borrarProyecto = (req, res)=>{
 
 const modificarProyecto = (req, res) => {
     const {id} = req.params;
-    const { numero, fecha, detalle, area, tema, estado, enlace } = req.body;
-    const sql = 'UPDATE proyectos SET nombre = ?, fecha = ?, detalle = ?, area = ?, tema = ?, estado = ?, enlace = ? WHERE id = ?';
+    const { numero, fecha, detalle, areas, tema, estado, enlace } = req.body;
+    const sql = 'UPDATE proyectos SET numero = ?, fecha = ?, detalle = ?, areas = ?, tema = ?, estado = ?, enlace = ? WHERE id = ?';
 
-    db.query(sql, [numero, fecha, detalle, area, tema, estado, enlace, id], (err, result) => {
+    db.query(sql, [numero, fecha, detalle, areas, tema, estado, enlace, id], (err, result) => {
         if(err) {
             throw err;
         }

@@ -2,6 +2,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
     imprimirProyectos('todo')
 });
 
+function completarSelectEdit() {
+    // ** AGREGAR ACA COMPLETAR SELECT DE AREAS Y TEMAS
+    const temasSetting = document.querySelector('#temas');
+    const areasSetting = document.querySelector('#areas');
+
+    const selectTema = document.querySelector('.proy-tema')
+
+    for (let index = 1; index < temasSetting.length; index++) {
+        const op = document.createElement('OPTION')
+        op.setAttribute('value',temasSetting.children[index].value )
+        op.textContent = temasSetting.children[index].value
+        selectTema.appendChild(op)
+    }
+
+    const selectArea = document.querySelector('.proy-area')
+    for (let index = 1; index < areasSetting.length; index++) {
+        const op = document.createElement('OPTION')
+        op.setAttribute('value',areasSetting.children[index].value )
+        op.textContent = areasSetting.children[index].value
+        selectArea.appendChild(op)
+    }
+}
+
 let temaProyectos = document.querySelector('#temas');
 temaProyectos.addEventListener('change', ()=>{
     if(temaProyectos.value === '') {
@@ -19,7 +42,9 @@ btnNuevo.forEach(btn=>{
     btn.addEventListener('click', (e)=>{
         const boton = e.target.parentElement.parentElement.nextElementSibling;
         boton.classList.toggle('hidden')
+        completarSelectEdit()
     })
+
 })
 
 // GUARDAR PROYECTOS - HITOS - PRENSA
@@ -43,7 +68,7 @@ btnGuardar.forEach(guardar =>{
             case 'form_hitos':
                 crearHito(formGuardar)
                 break;
-        
+
             default:
                 break;
         }
@@ -59,20 +84,17 @@ btnguardarSettings.forEach(guardar => {
         if(datoSetting.value != ''){
             switch (datoSetting.getAttribute('name')) {
                 case "crear-area":
-                    guardarArea(datoSetting)
-                    break;
+                guardarArea(datoSetting)
+                break;
                 case "crear-tema":
-                    guardarTema(datoSetting)
-                    break;
-                case "num-sesiones":
-                    guardarSesiones(datoSetting)
-                    break;
-                case "num-bloque":
-                    guardarbloque(datoSetting)
-                    break;
-            
+                guardarTema(datoSetting)
+                break;
+                case "sett-info":
+                actualizarInfo()
+                break;
+
                 default:
-                    break;
+                break;
             }
         }
 
@@ -87,8 +109,8 @@ async function imprimirProyectos(filtro, value = 'todo'){
 
     const responseProyectos = await fetch('/proyectos')
     const proyectos = await responseProyectos.json()
-    
-    console.log(proyectos);
+
+    //console.log(proyectos);
 
     switch (filtro) {
         case 'todo':
@@ -104,10 +126,18 @@ async function imprimirProyectos(filtro, value = 'todo'){
                 countProyectos++
             });
             break;
-    
+
         default:
             break;
     }
+
+    document.querySelectorAll('.editar').forEach(btn=>{
+        btn.addEventListener('click', (e) =>{
+            completEditarProyecto(e.target.parentElement.previousElementSibling)
+            completarSelectEdit()
+        })
+    })
+
 
     document.querySelector('#countProyectos').textContent = countProyectos;
 }
@@ -119,30 +149,37 @@ async function validarProyecto(form){
         numero: formData.get('proy-numero'),
         fecha: formData.get('proy-fecha'),
         detalle: formData.get('proy-detalle'),
-        areas: formData.get('proy-areas'),
+        areas: formData.get('proy-area'),
         tema: formData.get('proy-tema'),
         estado: formData.get('proy-estado'),
         enlace: formData.get('proy-enlace')
     }
     //console.log(dataProyecto);
 
-    if(Object.values(dataProyecto).includes('')){ 
-        alertas(form, 'Todos los campos deben estar completos')   
+    if(Object.values(dataProyecto).includes('')){
+        alertas(form, 'Todos los campos deben estar completos')
     } else {
         const response = await fetch('/proyectos')
         const proyectos = await response.json()
         let exist = proyectos.find(p => p.numero === dataProyecto.numero)
-        console.log(exist);
+        //console.log(exist);
         if(exist){
-            alertas(form, 'El proyecto ya está cargado')
-        } else {     
+            alertas(form, 'El proyecto ya existe. Para actualizar datos click en ACTUALIZAR')
+            form.querySelector('.botones .guardar').textContent = 'actualizar'
+            form.querySelector('.botones .guardar').classList.add('actualizar')
+
+            form.querySelector('.botones .actualizar').addEventListener('click', ()=>{
+                editarProyecto(form, exist)
+            })
+
+        } else {
             crearProyecto(dataProyecto)
         }
     }
-    
-   
+
 }
 
+// crea proyecto nuevo luego de validar form
 async function crearProyecto(form){
     // console.log(form);
     console.log('crear proyecto');
@@ -159,6 +196,33 @@ async function crearProyecto(form){
     window.location.reload()
 }
 
+// edita proyecto existente luego de validar form
+async function editarProyecto(form, existente) {
+
+    let formData = new FormData(form);
+    let dataProyecto = {
+        numero: formData.get('proy-numero'),
+        fecha: formData.get('proy-fecha'),
+        detalle: formData.get('proy-detalle'),
+        areas: formData.get('proy-area'),
+        tema: formData.get('proy-tema'),
+        estado: formData.get('proy-estado'),
+        enlace: formData.get('proy-enlace')
+    }
+
+    const id= parseInt(existente.id)
+    const responseEditProy = await fetch (`/proyectos/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataProyecto)
+    })
+    const result = await responseEditProy.json()
+    console.log(result.mensaje);
+    window.location.reload()
+}
+
 async function crearHito(form){
     console.log('crear hito');
 
@@ -169,7 +233,7 @@ async function guardarArea(dato) {
         area: dato.value.toLowerCase().trim()
     }
     console.log(data.area);
-    
+
 
     // validar si existe
     const response = await fetch('/areas')
@@ -185,7 +249,7 @@ async function guardarArea(dato) {
             alerta.innerHTML= ''
         }, 3000);
         return
-    } 
+    }
 
     console.log('guardar area');
     const responseGuardarArea = await fetch ('/areas', {
@@ -203,12 +267,12 @@ async function guardarArea(dato) {
 async function guardarTema(dato) {
     const data = {
         tema: dato.value.toLowerCase().trim()
-    }    
+    }
 
     // validar si existe
     const response = await fetch('/temas')
     const temasExistentes = await response.json()
-    
+
     let exist = temasExistentes.find(t => t.tema === data.tema)
     //console.log(exist);
     if(exist){
@@ -219,7 +283,7 @@ async function guardarTema(dato) {
             alerta.innerHTML= ''
         }, 3000);
         return
-    } 
+    }
 
     console.log('guardar tema');
     const responseGuardarTema = await fetch ('/temas', {
@@ -232,16 +296,32 @@ async function guardarTema(dato) {
     const result = await responseGuardarTema.json()
     console.log(result.mensaje);
     window.location.reload()
-    
+
 }
 
-async function guardarSesiones(dato){
+async function actualizarInfo(){
+    const sesiones = document.querySelector('#num-sesiones')
+    const bloque = document.querySelector('#num-bloque')
+
     console.log('actualizar numero sesiones');
+    const data = {
+        sesiones: Number(sesiones.value),
+        bloque: Number(bloque.value)
+    }
 
+    const responseInfo = await fetch (`/info/1`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    const result = await responseInfo.json()
+    console.log(result.mensaje);
+    window.location.reload()
 }
-async function guardarSesiones(dato) {
-    console.log('actualizar proyectos bloque');
-}
+
+
 
 // FUNCIONES
 function imprimirProyecto(proyecto) {
@@ -249,14 +329,14 @@ function imprimirProyecto(proyecto) {
     const card = document.createElement('div')
     card.classList.add('datos', 'border-btn')
     card.innerHTML= `
-    <div class="card">
+    <div class="card" data-id="${proyecto.id}">
         <div class="card_left">
             <div class="link-row">
                 <p class="numero">${proyecto.numero}</p>
                 <a href="${proyecto.enlace}">
                 <i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></a>
             </div>
-            <p class="fecha" data-id="${proyecto.fecha}">${invertirFecha(proyecto.fecha)}</p>
+            <p class="fecha" data-fecha="${proyecto.fecha}">${invertirFecha(proyecto.fecha)}</p>
             <p class="estado">${proyecto.estado}</p>
         </div>
         <div class="card_centro">
@@ -272,7 +352,31 @@ function imprimirProyecto(proyecto) {
         <button class="btn eliminar">eliminar</button>
     </div>
     `;
+
     return card
+}
+
+// completa la info del proyecto en el form editar
+function completEditarProyecto(section) {
+    console.log('completa datos en form');
+
+    const formEditar = section.parentElement.parentElement.previousElementSibling;
+    formEditar.classList.remove('hidden')
+    formEditar.querySelector('#proy-numero').value = section.querySelector('.numero').textContent;
+    formEditar.querySelector('#proy-enlace').value = section.querySelector('.link-row a').getAttribute('href')
+    formEditar.querySelector('#proy-fecha').value = section. querySelector('.fecha').getAttribute('data-fecha').slice(0,10);
+
+    formEditar.querySelectorAll('#proy-estado option').forEach(op => {
+        if(op.value === section.querySelector('.estado').textContent) {
+            op.setAttribute('selected', true)
+        }
+    })
+    formEditar.querySelector('#proy-detalle').textContent = section.querySelector('.resumen').textContent;
+    //formEditar.querySelector('#proy-areas').value = section.querySelector('.area').textContent  ** igual a select
+    formEditar.querySelectorAll('#proy-tema option').forEach(op=>{
+        if(op.value === section.querySelector('.tag').textContent){ op.setAttribute('selected', true)}
+    })
+
 }
 
 // alertas
@@ -289,7 +393,7 @@ function alertas(form, texto, tipo = 'error') {
         alerta.classList.add('success')
         alerta.textContent= texto;
     }
-    
+
 }
 
 // invertir fecha

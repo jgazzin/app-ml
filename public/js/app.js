@@ -20,6 +20,7 @@ document.querySelectorAll('.iconos-eventos i').forEach(i =>{
         if(i.classList.contains('fa-gear')){
             cajaSearch.classList.add('hidden')
             cajaSettings.classList.remove('hidden')
+            completeEditInfo(cajaSettings)
         } 
 
 
@@ -33,17 +34,23 @@ const fechaActual = new Date();
 const añoActual = fechaActual.getFullYear();
 document.querySelector('.date').textContent = añoActual;
 
-// Settings INFO
-
+// Settings INFO - rellena datos
+const sesiones = document.querySelector('.contenido .sesiones')
+const bloque = document.querySelector('.contenido .bloque')
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const sesiones = document.querySelector('.contenido .sesiones')
-    const bloque = document.querySelector('.contenido .bloque')
-
     const response = await fetch('/info');
     const info = await response.json()
-    console.log(info);
+    //console.log(info);
     
     sesiones.textContent = info[0].sesiones;
     bloque.textContent = info[0].bloque;
 })
+
+// completar editar información
+function completeEditInfo(caja) {
+    caja.querySelector('#num-sesiones').value = sesiones.textContent;
+    caja.querySelector('#num-bloque').value = bloque.textContent;
+    //console.log(bloque);
+    
+}

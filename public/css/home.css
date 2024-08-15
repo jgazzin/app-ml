@@ -1,3 +1,8 @@
+/* icon logout */
+.header .registro{
+    transform: scaleX(-1);
+}
+
 .datos {
 display: grid;
 grid-template-columns: 5fr 1fr;
@@ -5,9 +10,8 @@ gap: 16px;
 padding-bottom: 8px;
 }
 
-
 .border-btn{
-border-bottom: 1px solid var(--color-complemento);
+border-bottom: 1px solid rgb(180, 180, 180);
 
 }
 .botones{

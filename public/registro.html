@@ -28,7 +28,7 @@
         <div class="container header">
             <h2>Lacour<span> Martina</span></h2>
             <a href="index.html">
-                <i class="fa-solid fa-right-to-bracket fa-xl" id="login"></i>
+                <i class="fa-solid fa-right-from-bracket fa-xl registro" id="login"></i>
             </a>
         </div>
 
@@ -85,6 +85,7 @@
         <div class="eventos">
             <div class="filtros-buscar">
                 <script src="js/settings.js"></script>
+
                 <div class="temas">
                     <label for="temas">Filtrar por tema</label>
                     <select name="tema" id="temas">
@@ -127,7 +128,7 @@
                 <div>
                     <label for="num-sesiones">Cantidad sesiones</label>
                     <div  class="crear">
-                        <input type="number" id="num-sesiones" name="num-sesiones">
+                        <input type="number" id="num-sesiones" name="sett-info">
                         <button class="btn guardar">guardar</button>
 
                     </div>
@@ -137,7 +138,7 @@
                 <div>
                     <label for="num-bloque">Proyectos bloque</label>
                     <div  class="crear">
-                        <input type="number" id="num-bloque" name="num-bloque">
+                        <input type="number" id="num-bloque" name="sett-info">
                         <button class="btn guardar">guardar</button>
                     </div>
                     <p class="alerta"></p>
@@ -181,6 +182,7 @@
                     <div>
                         <label for="proy-estado">estado</label>
                         <select name="proy-estado" id="proy-estado">
+                            <option value=""></option>
                             <option value="presentado">presentado</option>
                             <option value="tratamiento">en tratamiento</option>
                             <option value="aprobado">aprobado</option>
@@ -197,16 +199,16 @@
                 <fieldset>
                     <div>
                         <label for="proy-areas">área</label>
-                        <input type="text" id="proy-areas" name="proy-areas">
+                        <select name="proy-area" id="proy-area" class="proy-area">
+                            <option value="" disabled>Elegir</option>
+                            <!-- se completa con js -->
+                        </select>
                     </div>
                     <div>
                         <label for="proy-tema">tema</label>
-                        <select name="proy-tema" id="proy-tema">
-                            <option value="" disabled>Elegir o crear</option>
-                            <option value="tema 1">tema 1</option>
-                            <option value="tema 2">tema 2</option>
-                            <option value="tema 3">tema 3</option>
-                            <option value="tema 4">tema 4</option>
+                        <select name="proy-tema" id="proy-tema" class="proy-tema">
+                            <option value="" disabled>Elegir</option>
+                            <!-- se completa con js -->
                         </select>
                     </div>
                     <div class="botones">

@@ -10,11 +10,11 @@ const obtenerInfo = (req, res) =>{
 }
 
 const editarInfo = (req, res) => {
-    const {id} = req.params;
-    const { sesiones, bloque } = req.body;
-    const sql = 'UPDATE info SET sesiones = ?, bloque = ? WHERE id = ?';
 
-    db.query(sql, [sesiones, bloque, id], (err, result) => {
+    const { sesiones, bloque } = req.body;
+    const sql = 'UPDATE info SET sesiones = ?, bloque = ? WHERE id = 1';
+
+    db.query(sql, [sesiones, bloque], (err, result) => {
         if(err) {
             throw err;
         }
