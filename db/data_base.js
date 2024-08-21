@@ -44,21 +44,21 @@ connection.connect( (err) => {
             })
 
             // ----- PUBLICACIONES REDES
-            const createTablePublisQuery = `
-            CREATE TABLE IF NOT EXISTS publicaciones(
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            fecha DATE NOT NULL,
-            medio VARCHAR(40) NOT NULL,
-            tema VARCHAR(30) NOT NULL,
-            enlace TEXT NOT NULL
-            );`;
+            // const createTablePublisQuery = `
+            // CREATE TABLE IF NOT EXISTS publicaciones(
+            // id INT AUTO_INCREMENT PRIMARY KEY,
+            // fecha DATE NOT NULL,
+            // medio VARCHAR(40) NOT NULL,
+            // tema VARCHAR(30) NOT NULL,
+            // enlace TEXT NOT NULL
+            // );`;
 
-            connection.query(createTablePublisQuery, (err, result) => {
-                if(err) {
-                    console.log('error creando tabla publicaciones', err);
-                }
-                console.log('tabla publicaciones asegurada');
-            })
+            // connection.query(createTablePublisQuery, (err, result) => {
+            //     if(err) {
+            //         console.log('error creando tabla publicaciones', err);
+            //     }
+            //     console.log('tabla publicaciones asegurada');
+            // })
 
             //------ PROYECTOS 
             const createTableProyectosQuery = `

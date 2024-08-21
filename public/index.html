@@ -20,7 +20,10 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/ico-pro.png" type="image/png">
-   
+
+    <!-- BREVO -->
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
 </head>
 
 <body>
@@ -30,7 +33,7 @@
             <a href="registro.html">
                 <i class="fa-solid fa-right-to-bracket fa-xl" id="login"></i>
             </a>
-            
+
         </div>
 
         <div class="container cuadro_resumen">
@@ -39,7 +42,7 @@
                     <p>legisladora rio negro</p>
                     <p>Bloque PRO Unión Republicana</p>
                 </div>
-                
+
                 <div class="tabla">
                     <div class="encabezado">
                         <p>sesiones</p>
@@ -60,14 +63,14 @@
                         <p id="countPrensa"></p>
                     </div>
 
-                </div>      
+                </div>
             </div>
         </div>
     </header>
     <main class="container">
         <div class="titulo m-top">
             <i class="fa-solid fa-landmark fa-xl"></i>
-            <h3>informe de gestión</h3>
+            <h3>trabajo legislativo</h3>
         </div>
 
         <div class="search_nav">
@@ -93,7 +96,7 @@
                         <option value="todos" selected>todos</option>
                         <!-- desde settings.js -->
                     </select>
-        
+
                 </div>
                 <div class="filtro areas">
                     <label for="areas">Filtrar por Area</label>
@@ -122,52 +125,11 @@
                 <div class="filtro">
                     <div class="botones">
                         <button class="btn guardar">limpiar</button>
-                        <button class="btn primary">buscar</button>  
+                        <button class="btn primary">buscar</button>
                     </div>
                 </div>
-        
+
             </div>
-
-            <!-- <div class="settings hidden">
-                <div>
-                    <label for="crear-tema">Tema Nuevo</label>
-                    <div  class="crear tema">
-                        <input type="text" id="crear-tema" name="crear-tema">
-                        <button class="btn guardar">guardar</button>
-
-                    </div>
-                    <p class="alerta"></p>
-                </div>
-
-                <div>
-                    <label for="crear-area">Área Nueva</label>
-                    <div  class="crear area">
-                        <input type="text" id="crear-area" name="crear-area">
-                        <button class="btn guardar">guardar</button>
-                    </div>
-                    <p class="alerta"></p>
-                </div>
-
-                <div>
-                    <label for="num-sesiones">Cantidad sesiones</label>
-                    <div  class="crear">
-                        <input type="number" id="num-sesiones" name="sett-info">
-                        <button class="btn guardar">guardar</button>
-
-                    </div>
-                    <p class="alerta"></p>
-                </div>
-
-                <div>
-                    <label for="num-bloque">Proyectos bloque</label>
-                    <div  class="crear">
-                        <input type="number" id="num-bloque" name="sett-info">
-                        <button class="btn guardar">guardar</button>
-                    </div>
-                    <p class="alerta"></p>
-                </div>
-
-            </div> -->
 
         </div>
 
@@ -184,7 +146,7 @@
         <div></div>
         <div class="proyectos_propios">
             <!-- desde JS -->
-            
+
         </div>
 
         <div class="headline" id="hitos">
@@ -220,17 +182,93 @@
 
     </main>
 
+    <!-- CONTACTO -->
+    <section class="contactForm" id="form">
+        <div class="container">
+                <div class="medio-container">
+                    <form action="" class="form" novalidate>
+                        <legend>contacto</legend>
+                        <div class="item">
+                            <!-- <label for="mensaje">Mensaje</label> -->
+                            <div class="input">
+                                <textarea name="mensaje" id="mensaje" rows="5" placeholder="Mensaje" maxlength="600"></textarea>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <!-- <label for="name">Nombre</label> -->
+                            <div class="input">
+                                <input type="text" id="name" name="name" placeholder="nombre">
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <!-- <label for="email">e-mail</label> -->
+                            <div class="input">
+                                <input type="email" id="email" name="email" placeholder="e-mail">
+                            </div>
+                        </div>
+
+                        <button class="btn cancelar" disabled>enviar</button>
+
+                    </form>
+                </div>
+
+            </div>
+    </section>
+
+    <!-- FAQS ITEMS -->
+    <section class="faqs">
+        <div class="container faqs">
+            <div class="titulo">
+                <i class="fa-solid fa-right-long fa-xl"></i>
+                <h2>Sobre mí</h2>
+            </div>
+            <div class="preguntas-contenedor">
+                <div class="item">
+                    <div class="pregunta">
+                        <h4>¿pregunta uno?</h4>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="respuesta hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga consequatur voluptas temporibus impedit voluptates iusto, pariatur nostrum veritatis adipisci quo.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pregunta">
+                        <h4>¿pregunta uno?</h4>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="respuesta hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga consequatur voluptas temporibus impedit voluptates iusto, pariatur nostrum veritatis adipisci quo.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pregunta">
+                        <h4>¿pregunta uno?</h4>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="respuesta hidden">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga consequatur voluptas temporibus impedit voluptates iusto, pariatur nostrum veritatis adipisci quo.</p>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+    </section>
+
     <footer>
         <div class="container header">
             <h2>Lacour<span> Martina</span></h2>
             <div class="social">
                 <a href="https://www.facebook.com/lacourmartina">
-                <i class="fa-brands fa-facebook fa-2xl"></i></a>
+                    <i class="fa-brands fa-facebook fa-2xl"></i></a>
                 <a href="https://www.instagram.com/lacourmartina">
-                <i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                    <i class="fa-brands fa-square-instagram fa-2xl"></i></a>
                 <a href="https://www.x.com/lacourmartina">
-                <i class="fa-brands fa-twitter fa-2xl"></i></a>
-                <a href="https://www.linkedin.com/in/martina-valeria-lacour-594ab257/"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                    <i class="fa-brands fa-twitter fa-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/martina-valeria-lacour-594ab257/"><i
+                        class="fa-brands fa-linkedin fa-2xl"></i></a>
             </div>
         </div>
 
@@ -246,6 +284,7 @@
     </footer>
     <script src="js/app.js"></script>
     <script src="js/home.js"></script>
+    
 </body>
 
 </html>
