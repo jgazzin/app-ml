@@ -83,24 +83,46 @@
         </div>
 
         <div class="eventos">
-            <div class="filtros-buscar">
+            <div class="filtros-buscar hidden">
                 <script src="js/settings.js"></script>
 
-                <div class="temas">
+                <div class="filtro temas">
                     <label for="temas">Filtrar por tema</label>
                     <select name="tema" id="temas">
-                        <option value="" selected>todos</option>
-
+                        <option value="todos" selected>todos</option>
+                        <!-- desde settings.js -->
                     </select>
         
                 </div>
-                <div class="areas">
+                <div class="filtro areas">
                     <label for="areas">Filtrar por Area</label>
                     <select name="area" id="areas">
-                        <option value="" selected>todos</option>
-
+                        <option value="todos" selected>todos</option>
+                        <!-- desde settings.js -->
                     </select>
-        
+                </div>
+
+                <div class="filtro year">
+                    <div>
+                        <label for="year">Filtrar por Año</label>
+                        <select name="year" id="year">
+                            <option value="2024" selected>2024</option>
+                            <!-- desde settings.js -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mes">Filtrar por Mes</label>
+                        <select name="mes" id="mes">
+                            <option value="01" selected>Enero</option>
+                            <!-- desde settings.js -->
+                        </select>
+                    </div>
+                </div>
+                <div class="filtro">
+                    <div class="botones">
+                        <button class="btn guardar">limpiar</button>
+                        <button class="btn primary">buscar</button>  
+                    </div>
                 </div>
         
             </div>
@@ -149,7 +171,7 @@
         </div>
 
 
-        <div class="datos">
+        <div class="head">
             <div class="headline" id="proyectos">
                 <div class="titulo">
                     <i class="fa-solid fa-sheet-plastic fa-lg"></i>
@@ -206,7 +228,7 @@
                     </div>
                     <div>
                         <label for="proy-tema">tema</label>
-                        <select name="proy-tema" id="proy-tema" class="proy-tema">
+                        <select name="proy-tema" id="proy-tema" class="select-tema">
                             <option value="" disabled>Elegir</option>
                             <!-- se completa con js -->
                         </select>
@@ -222,10 +244,10 @@
         </div>
 
         <div class="proyectos_propios">
-            <!-- desde JS -->
+            <!-- desde JS registro.js -->
         </div>
         
-        <div class="datos">
+        <div class="head">
             <div class="headline" id="hitos">
                 <div class="titulo">
                     <i class="fa-solid fa-location-pin fa-lg"></i>
@@ -244,45 +266,76 @@
             <form action="" class="form_hitos">
                 <fieldset>
                     <div>
-                        <label for="hitos-numero">nº proyecto</label>
-                        <input type="text" id="hitos-numero">
-                    </div>
-                    <div>
-                        <label for="hitos-enlace">enlace</label>
-                        <input type="text" id="hitos-enlace">
-                    </div>
-                    <div>
                         <label for="hitos-fecha">fecha</label>
                         <input type="date" id="hitos-fecha">
                     </div>
                     <div>
-                        <label for="hitos-estado">estado</label>
-                        <select name="hitos-estado" id="hitos-estado">
-                            <option value="presentado">presentado</option>
-                            <option value="tratamiento">en tratamiento</option>
-                            <option value="aprobado">aprobado</option>
-                            <option value="rechazado">rechazado</option>
+                        <label for="hitos-tema">tema</label>
+                        <select name="hitos-tema" id="hitos-tema" class="select-tema">
+                            <option value="" disabled>Elegir</option>
                         </select>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div>
                         <label for="hitos-detalle">Detalle</label>
-                        <textarea name="hitos-detalle" id="hitos-detalle" rows="10"></textarea>
+                        <textarea name="hitos-detalle" id="hitos-detalle" rows="5"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="botones">
+                        <button class="btn eliminar">cancelar</button>
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="hitos">
+            <!-- desde JS registro.js -->
+        </div>
+
+        <div class="head">
+            <div class="headline" id="prensa">
+                <div class="titulo">
+                    <i class="fa-solid fa-newspaper fa-lg"></i>
+                    <h3>Notas en medios</h3>
+                </div>
+                <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
+            </div>
+            <div class="botones">
+                <button class="btn primary">+ nuevo</button>
+            </div>
+        </div>
+
+        <!-- FORM CREAR PRENSA - ** ADAPTAR -->
+        <div class="hidden">
+            <form action="" class="form_prensa">
+                <fieldset>
+                    <div>
+                        <label for="prensa-fecha">fecha</label>
+                        <input type="date" name="prensa-fecha" id="prensa-fecha">
+                    </div>
+                    <div>
+                        <label for="prensa-medio">Medio</label>
+                        <input type="text" name="prensa-medio" id="prensa-medio">
                     </div>
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label for="hitos-areas">área</label>
-                        <input type="text" id="proy-areas">
+                        <label for="prensa-titulo">Título</label>
+                        <textarea name="prensa-titulo" id="prensa-titulo" rows="4"></textarea>
                     </div>
                     <div>
-                        <label for="hitos-estado">tema</label>
-                        <select name="hitos-tema" id="hitos-tema">
-                            <option value="tema 1">tema 1</option>
-                            <option value="tema 2">tema 2</option>
-                            <option value="tema 3">tema 3</option>
-                            <option value="tema 4">tema 4</option>
+                        <label for="prensa-enlace">enlace</label>
+                        <input type="text" id="prensa-enlace">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="prensa-tema">tema</label>
+                        <select name="prensa-tema" id="prensa-tema" class="select-tema">
+                            <option value="" disabled>Elegir</option>
                         </select>
                     </div>
     
@@ -294,20 +347,8 @@
             </form>
         </div>
 
-        <div class="hitos">
-            <!-- desde JS -->
-        </div>
-
-        <div class="headline" id="prensa">
-            <div class="titulo">
-                <i class="fa-solid fa-newspaper fa-lg"></i>
-                <h3>Notas en medios</h3>
-            </div>
-            <i class="fa-solid fa-circle-up fa-2xl verMas"></i>
-        </div>
-
         <div class="prensa">
-
+            <!-- desde JS registro.js -->
         </div>
 
 

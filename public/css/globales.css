@@ -78,12 +78,12 @@ section{
   text-align: center;
   cursor: pointer;
   width: 100%;
-
+  min-width: 100px;
 }
 
 .primary{
   background-color: var(--color-ppal);
-  border: 1px solid var(--color-ppal);
+  border: 2px solid var(--color-ppal);
   color: var(--color-negativo);
 }
 
@@ -140,4 +140,9 @@ section{
   gap: 1rem;
   padding: 1.5rem 0;
   text-transform: uppercase;
+}
+
+.titulo i{
+  color: var(--color-ppal);
+  text-shadow: var(--shadow);
 }

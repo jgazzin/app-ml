@@ -66,25 +66,6 @@ header .header h2{
     justify-content: space-between;
 }
 
-.temas,
-.areas{
-    width: 45%;
-}
-
-#temas option,
-#areas option {
-    text-transform: uppercase;
-}
-
-.temas select,
-.areas select{
-    width: 100%;
-    padding: 4px;
-    border: 1px solid var(--color-complemento);
-    border-radius: 4px;
-}
-
-
 @media (max-width: 576px) {
     header{
         padding-top: 1rem;

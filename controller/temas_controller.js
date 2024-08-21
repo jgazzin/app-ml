@@ -17,7 +17,7 @@ const createTema = (req, res) =>{
         if(err) throw err;
         res.json({
             mensaje: 'Tema guardada',
-            notaID: result.insertId
+            temaID: result.insertId
         })
     })
 }

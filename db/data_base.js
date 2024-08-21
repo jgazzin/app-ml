@@ -26,17 +26,18 @@ connection.connect( (err) => {
 
             // --- PUBLICACIONES EN MEDIOS
             const createTableMediosQuery = `
-            CREATE TABLE IF NOT EXISTS medios(
+            CREATE TABLE IF NOT EXISTS prensa(
             id INT AUTO_INCREMENT PRIMARY KEY,
             fecha DATE NOT NULL,
             medio VARCHAR(40) NOT NULL,
+            titulo VARCHAR(255) NOT NULL,
             tema VARCHAR(30) NOT NULL,
             enlace TEXT NOT NULL
             );`;
 
             connection.query(createTableMediosQuery, (err, result) => {
                 if(err) {
-                    console.log('Error creando tabla medios', err);
+                    console.log('Error creando tabla prensa', err);
                     return;
                 }
             console.log('Tabla medios asegurada');
@@ -127,24 +128,40 @@ connection.connect( (err) => {
                 console.log('tabla info asegurada'); 
             })
 
-            //---- MENSAJES
-            const createTableMensajesQuery = `
-            CREATE TABLE IF NOT EXISTS mensajes(
+            //---- HITOS
+            const createTableHitosQuery = `
+            CREATE TABLE IF NOT EXISTS hitos(
             id INT AUTO_INCREMENT PRIMARY KEY,
-            asunto VARCHAR(30) NOT NULL,
+            hito TEXT NOT NULL,
             fecha DATE NOT NULL,
-            mensaje TEXT NOT NULL,
-            remit_nombre VARCHAR(40) NOT NULL,
-            remit_apellido VARCHAR(40),
-            email VARCHAR(255) NOT NULL);
+            tema VARCHAR(30) NOT NULL);
             `;
 
-            connection.query(createTableMensajesQuery, (err, result) => {
+            connection.query(createTableHitosQuery, (err, result) => {
                 if(err) {
-                    console.log('error creando tabla mensajes', err);
+                    console.log('error creando tabla hitos', err);
                 }
-                console.log('tabla mensajes asegurada');
+                console.log('tabla hitos asegurada');
             })
+
+             //---- MENSAJES
+             const createTableMensajesQuery = `
+             CREATE TABLE IF NOT EXISTS mensajes(
+             id INT AUTO_INCREMENT PRIMARY KEY,
+             asunto VARCHAR(30) NOT NULL,
+             fecha DATE NOT NULL,
+             mensaje TEXT NOT NULL,
+             remit_nombre VARCHAR(40) NOT NULL,
+             remit_apellido VARCHAR(40),
+             email VARCHAR(255) NOT NULL);
+             `;
+ 
+             connection.query(createTableMensajesQuery, (err, result) => {
+                 if(err) {
+                     console.log('error creando tabla mensajes', err);
+                 }
+                 console.log('tabla mensajes asegurada');
+             })
 
         })
 

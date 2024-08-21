@@ -1,7 +1,7 @@
 const db = require('../db/data_base')
 
 const obtenerNotas = (req, res) =>{
-    const sql ='SELECT * FROM medios';
+    const sql ='SELECT * FROM prensa';
 
     db.query(sql, (err, result) =>{
         if(err) throw err;
@@ -9,21 +9,12 @@ const obtenerNotas = (req, res) =>{
     })
 }
 
-const obtenerNotasTema = (req,res)=>{
-    const {tema} = req.params;
-    const sql = 'SELECT * FROM medios WHERE id = ?';
-
-    db.query(sql, [tema], (err, result)=>{
-        if(err) throw err;
-        res.json(result);
-    })
-}
 
 const createNota = (req, res) =>{
-    const {fecha, medio, tema, enlace} = req.body;
-    const sql = 'INSERT INTO medios (fecha, medio, tema, enlace) VALUE (?,?,?,?)';
+    const {fecha, medio, titulo, tema, enlace} = req.body;
+    const sql = 'INSERT INTO prensa (fecha, medio, titulo, tema, enlace) VALUE (?,?,?,?,?)';
 
-    db.query(sql, [fecha, medio, tema, enlace], (err, result)=>{
+    db.query(sql, [fecha, medio, titulo, tema, enlace], (err, result)=>{
         if(err) throw err;
         res.json({
             mensaje: 'Nota guardada',
@@ -34,7 +25,7 @@ const createNota = (req, res) =>{
 
 const borrarNota = (req, res)=>{
     const {id} =req.params;
-    const sql = 'DELETE FROM medios WHERE id = ?';
+    const sql = 'DELETE FROM prensa WHERE id = ?';
 
     db.query(sql, [id], (err, result)=>{
         if(err) throw err;
@@ -46,7 +37,6 @@ const borrarNota = (req, res)=>{
 
 module.exports ={
     obtenerNotas,
-    obtenerNotasTema,
     createNota,
     borrarNota
 }

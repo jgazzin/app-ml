@@ -27,7 +27,7 @@ const createProyecto = (req, res) =>{
         if(err) throw err;
         res.json({
             mensaje: 'Proyecto guardado',
-            notaID: result.insertId
+            proyectoID: result.insertId
         })
     })
 }

@@ -84,27 +84,90 @@
         </div>
 
         <div class="eventos">
-            <div class="filtros-buscar">
+            <div class="filtros-buscar hidden">
                 <script src="js/settings.js"></script>
 
-                <div class="temas">
+                <div class="filtro temas">
                     <label for="temas">Filtrar por tema</label>
                     <select name="tema" id="temas">
-                        <option value="" selected>todos</option>
-
+                        <option value="todos" selected>todos</option>
+                        <!-- desde settings.js -->
                     </select>
         
                 </div>
-                <div class="areas">
+                <div class="filtro areas">
                     <label for="areas">Filtrar por Area</label>
                     <select name="area" id="areas">
-                        <option value="" selected>todos</option>
-
+                        <option value="todos" selected>todos</option>
+                        <!-- desde settings.js -->
                     </select>
-        
+                </div>
+
+                <div class="filtro year">
+                    <div>
+                        <label for="year">Filtrar por Año</label>
+                        <select name="year" id="year">
+                            <option value="2024" selected>2024</option>
+                            <!-- desde settings.js -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mes">Filtrar por Mes</label>
+                        <select name="mes" id="mes">
+                            <option value="01" selected>Enero</option>
+                            <!-- desde settings.js -->
+                        </select>
+                    </div>
+                </div>
+                <div class="filtro">
+                    <div class="botones">
+                        <button class="btn guardar">limpiar</button>
+                        <button class="btn primary">buscar</button>  
+                    </div>
                 </div>
         
             </div>
+
+            <!-- <div class="settings hidden">
+                <div>
+                    <label for="crear-tema">Tema Nuevo</label>
+                    <div  class="crear tema">
+                        <input type="text" id="crear-tema" name="crear-tema">
+                        <button class="btn guardar">guardar</button>
+
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="crear-area">Área Nueva</label>
+                    <div  class="crear area">
+                        <input type="text" id="crear-area" name="crear-area">
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="num-sesiones">Cantidad sesiones</label>
+                    <div  class="crear">
+                        <input type="number" id="num-sesiones" name="sett-info">
+                        <button class="btn guardar">guardar</button>
+
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+                <div>
+                    <label for="num-bloque">Proyectos bloque</label>
+                    <div  class="crear">
+                        <input type="number" id="num-bloque" name="sett-info">
+                        <button class="btn guardar">guardar</button>
+                    </div>
+                    <p class="alerta"></p>
+                </div>
+
+            </div> -->
 
         </div>
 
@@ -120,7 +183,8 @@
 
         <div></div>
         <div class="proyectos_propios">
-            <script src="js/proyectos.js"></script>
+            <!-- desde JS -->
+            
         </div>
 
         <div class="headline" id="hitos">
@@ -135,7 +199,7 @@
 
         <div></div>
         <div class="hitos">
-            <script src="js/hitos.js"></script>
+            <!-- desde home.js -->
         </div>
 
         <div class="headline" id="prensa">
@@ -150,7 +214,7 @@
 
         <div></div>
         <div class="prensa">
-            <script src="js/prensa.js"></script>
+            <!-- desde home.js -->
         </div>
 
 
@@ -181,6 +245,7 @@
         </div>
     </footer>
     <script src="js/app.js"></script>
+    <script src="js/home.js"></script>
 </body>
 
 </html>

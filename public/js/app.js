@@ -14,12 +14,12 @@ document.querySelectorAll('.iconos-eventos i').forEach(i =>{
         const cajaSettings = document.querySelector('.eventos .settings')
 
         if(i.classList.contains('fa-magnifying-glass')){
-            cajaSearch.classList.remove('hidden')
+            cajaSearch.classList.toggle('hidden')
             cajaSettings.classList.add('hidden')
         } 
         if(i.classList.contains('fa-gear')){
             cajaSearch.classList.add('hidden')
-            cajaSettings.classList.remove('hidden')
+            cajaSettings.classList.toggle('hidden')
             completeEditInfo(cajaSettings)
         } 
 
