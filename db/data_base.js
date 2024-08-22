@@ -17,14 +17,14 @@ connection.connect( (err) => {
     }
     console.log('Conectado a BD ok');
 
-    connection.query('CREATE DATABASE IF NOT EXISTS registro_ml', (err, result) => {
+    connection.query('CREATE DATABASE IF NOT EXISTS jgdisenio_ml', (err, result) => {
         if(err){
             console.log(`Error creando BD registro_ml`);
             return;
         }
         console.log('BD asegurada');
 
-        connection.changeUser({database: 'registro_ml'}, (err) =>{
+        connection.changeUser({database: 'jgdisenio_ml desde alwaysdata'}, (err) =>{
             if(err) {
                 console.error('Error al cambiar a la BD ', err)
             }
