@@ -25,7 +25,21 @@ const editarInfo = (req, res) => {
 
 };
 
+const createInfo = (req, res) =>{
+    const { sesiones, bloque } = req.body;
+    const sql = 'INSERT INTO info (sesiones, bloque) VALUE (?,?)';
+
+    db.query(sql, [sesiones, bloque], (err, result)=>{
+        if(err) throw err;
+        res.json({
+            mensaje: 'registro 1 info guardada',
+            notaID: result.insertId
+        })
+    })
+}
+
 module.exports ={
     obtenerInfo,
-    editarInfo
+    editarInfo,
+    createInfo
 }

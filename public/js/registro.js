@@ -8,12 +8,42 @@ let filtros = {
 
 document.addEventListener('DOMContentLoaded', ()=>{
     console.log('imprimir sin filtros');
-    
+    // *1
     imprimirProyectos('todo')
-    imprimirPrensa(filtros)
-    imprimirHitos(filtros)
-    imprimirMensajes()
+       
 });
+
+// buscar filtros
+document.querySelector('.filtro .btn.primary').addEventListener('click', ()=>{
+    filtros = {
+        filtroTema : document.querySelector('#temas').value,
+        filtroArea : document.querySelector('#areas').value,
+        filtroYear : document.querySelector('#year').value,
+        filtroMes : document.querySelector('#mes').value
+    }
+    console.log(filtros);
+    
+    console.log(('imprimir todo con filtros'));
+    
+})
+
+
+// limpiar filtros
+document.querySelector('.filtro .btn.guardar').addEventListener('click', ()=>{
+    window.location.reload()
+})
+
+// boton crear nuevo
+const btnNuevo = document.querySelectorAll('.head .primary')
+btnNuevo.forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+        const boton = e.target.parentElement.parentElement.nextElementSibling;
+        boton.classList.toggle('hidden')
+        const formNuevo = boton.querySelector('form')
+        formNuevo.reset()
+        completarSelectEdit()
+    }) 
+})
 
 // selects de filtros
 function completarSelectEdit() {
@@ -54,39 +84,6 @@ function completarSelectEdit() {
         selectArea.appendChild(op)
     }
 }
-
-// buscar filtros
-document.querySelector('.filtro .btn.primary').addEventListener('click', ()=>{
-    filtros = {
-        filtroTema : document.querySelector('#temas').value,
-        filtroArea : document.querySelector('#areas').value,
-        filtroYear : document.querySelector('#year').value,
-        filtroMes : document.querySelector('#mes').value
-    }
-    console.log(filtros);
-    
-    console.log(('imprimir todo con filtros'));
-    
-})
-
-
-// limpiar filtros
-document.querySelector('.filtro .btn.guardar').addEventListener('click', ()=>{
-    window.location.reload()
-})
-
-// boton crear nuevo
-const btnNuevo = document.querySelectorAll('.head .primary')
-btnNuevo.forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-        const boton = e.target.parentElement.parentElement.nextElementSibling;
-        boton.classList.toggle('hidden')
-        const formNuevo = boton.querySelector('form')
-        formNuevo.reset()
-        completarSelectEdit()
-    })
-    
-})
 
 // GUARDAR PROYECTOS - HITOS - PRENSA
 const btnGuardar = document.querySelectorAll('fieldset .btn')
@@ -146,6 +143,8 @@ btnguardarSettings.forEach(guardar => {
 });
 
 // FUNCIONES ASYNC
+
+// *** PROYECTOS
 async function imprimirProyectos(filtro, value = 'todo'){
     const contenedorProyectos = document.querySelector('.proyectos_propios')
     contenedorProyectos.innerHTML = '';
@@ -191,6 +190,8 @@ async function imprimirProyectos(filtro, value = 'todo'){
     })
 
     document.querySelector('#countProyectos').textContent = countProyectos;
+    // *2
+    imprimirHitos(filtros)
 }
 
 async function validarProyecto(form){
@@ -286,6 +287,8 @@ async function eliminarProyecto(elemento) {
     window.location.reload()
 }
 
+
+// **** INFO
 async function guardarArea(dato) {
     const data = {
         area: dato.value.toLowerCase().trim()
@@ -356,6 +359,8 @@ async function guardarTema(dato) {
 }
 
 async function actualizarInfo(){
+    console.log('actualiza info');
+    
     const sesiones = document.querySelector('#num-sesiones')
     const bloque = document.querySelector('#num-bloque')
 
@@ -364,7 +369,8 @@ async function actualizarInfo(){
         sesiones: Number(sesiones.value),
         bloque: Number(bloque.value)
     }
-
+    //console.log(data);
+    
     const responseInfo = await fetch (`/info/1`, {
         method: 'PUT',
         headers: {
@@ -377,7 +383,7 @@ async function actualizarInfo(){
     window.location.reload()
 }
 
-// Prensa
+// *** PRENSA
 async function imprimirPrensa(filtros) {
     console.log('imprime registros de prensa desde BD');
     console.log(filtros);
@@ -415,7 +421,8 @@ async function imprimirPrensa(filtros) {
     })
     const countPrensa = notasPrensa.length;
     document.querySelector('#countPrensa').textContent = countPrensa;
-    
+    // *4
+    imprimirMensajes()
 }
 
 async function crearPrensa(data){
@@ -466,6 +473,8 @@ async function imprimirHitos(filtros) {
         `;
         sectionHitos.appendChild(card) 
     })
+    // *3
+    imprimirPrensa(filtros)
 }
 
 async function crearHito(form){
@@ -473,7 +482,7 @@ async function crearHito(form){
 
 }
 
-// mensajes
+// *** MENSAJES
 async function imprimirMensajes() {
     const sectionMensajes = document.querySelector('.mensajes')
     sectionMensajes.innerHTML = '';
@@ -510,7 +519,9 @@ async function imprimirMensajes() {
     document.querySelector('#countMsg').textContent = countMensajes;
 }
 
-// FUNCIONES
+
+
+// ----- FUNCIONES
 function imprimirProyecto(proyecto) {
 
     const card = document.createElement('div')

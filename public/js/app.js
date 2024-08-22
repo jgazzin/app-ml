@@ -35,22 +35,47 @@ const añoActual = fechaActual.getFullYear();
 document.querySelector('.date').textContent = añoActual;
 
 // Settings INFO - rellena datos
-const sesiones = document.querySelector('.contenido .sesiones')
-const bloque = document.querySelector('.contenido .bloque')
+const numSesiones = document.querySelector('.contenido .sesiones')
+const numBloque = document.querySelector('.contenido .bloque')
 
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/info');
     const info = await response.json()
-    //console.log(info);
     
-    sesiones.textContent = info[0].sesiones;
-    bloque.textContent = info[0].bloque;
+    if(info.length != 0) {
+        numSesiones.textContent = info[0].sesiones;
+        numBloque.textContent = info[0].bloque;
+        //console.log(info);
+        
+    } else {
+        numSesiones.textContent = 0;
+        numBloque.textContent = 0;
+        crearRegistroUno()
+    }
+
+    async function crearRegistroUno() {
+        const registro = {
+            sesiones: 0,
+            bloque: 0
+        }
+
+        const responseRegistro = await fetch ('/info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registro)
+        })
+        const result = await responseRegistro.json()
+        console.log(result.mensaje);
+        window.location.reload()
+    }
 })
 
 // completar editar información
 function completeEditInfo(caja) {
-    caja.querySelector('#num-sesiones').value = sesiones.textContent;
-    caja.querySelector('#num-bloque').value = bloque.textContent;
+    caja.querySelector('#num-sesiones').value = numSesiones.textContent;
+    caja.querySelector('#num-bloque').value = numBloque.textContent;
     //console.log(bloque);
     
 }
