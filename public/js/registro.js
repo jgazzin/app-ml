@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     imprimirProyectos('todo')
     imprimirPrensa(filtros)
     imprimirHitos(filtros)
+    imprimirMensajes()
 });
 
 // selects de filtros
@@ -470,6 +471,43 @@ async function imprimirHitos(filtros) {
 async function crearHito(form){
     console.log('crear hito');
 
+}
+
+// mensajes
+async function imprimirMensajes() {
+    const sectionMensajes = document.querySelector('.mensajes')
+    sectionMensajes.innerHTML = '';
+
+    const responseMsg = await fetch('/mensajes')
+    const mensajes = await responseMsg.json()
+    
+    mensajes.forEach(msg =>{
+        const card = document.createElement('div')
+        card.classList.add('datos', 'border-btn')
+        card.innerHTML= `
+        <div class="card" data-id="${msg.id}">
+            <div class="card_left">
+                <p>${invertirFecha(msg.fecha)}</p>
+                <p class="estado">${msg.asunto}</p>
+            </div>
+            <div class="card_centro">
+                <p>${msg.mensaje}</p>
+            </div>
+            <div class="card_right">
+                <p>${msg.nombre}</p>
+                <p>${msg.ciudad}</p>
+            </div>
+        </div>
+        <div class="btn-row">
+            <i class="fa-solid fa-envelope fa-xl"></i>
+            <i class="fa-solid fa-trash-can fa-xl"></i>
+            <i class="fa-solid fa-paper-plane fa-xl"></i>
+        </div>
+        `;
+        sectionMensajes.appendChild(card) 
+    })
+    const countMensajes = mensajes.length;
+    document.querySelector('#countMsg').textContent = countMensajes;
 }
 
 // FUNCIONES

@@ -400,6 +400,33 @@ textarea {
   transition: 1.5s all ease-in-out;
 }
 
+.btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-row i {
+  color: var(--color-complemento);
+  cursor: pointer;
+}
+.btn-row i:hover {
+  transform: scale(1.05);
+  color: var(--color-ppal);
+}
+
+.mensajes .datos{
+  align-items: last baseline;
+}
+
+@media (max-width: 576px) {
+    .btn-row{
+      margin: 1rem auto;
+      width: 200px;
+    }
+}
+
 /* FAQS */
 .faqs {
   display: flex;

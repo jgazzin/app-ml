@@ -151,9 +151,9 @@ connection.connect( (err) => {
              asunto VARCHAR(30) NOT NULL,
              fecha DATE NOT NULL,
              mensaje TEXT NOT NULL,
-             remit_nombre VARCHAR(40) NOT NULL,
-             remit_apellido VARCHAR(40),
-             email VARCHAR(255) NOT NULL);
+             nombre VARCHAR(40) NOT NULL,
+             email VARCHAR(255) NOT NULL,
+             ciudad VARCHAR(50) NOT NULL);
              `;
  
              connection.query(createTableMensajesQuery, (err, result) => {

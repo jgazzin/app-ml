@@ -182,13 +182,16 @@ const contactform = document.querySelector('.contactForm .form');
 const btnForm = document.querySelector('.contactForm .form .btn')
 
 const fechaMensaje = new Date();
+let mes = fechaMensaje.getMonth()
+mes = mes < 10 ? '0' + mes : mes.toString();
 
 let dataContacto = {
     nombre: '',
     email: '',
+    ciudad: '',
     mensaje: '',
     asunto: 'gral',
-    fecha: `${fechaMensaje.getDate()}-${fechaMensaje.getMonth()}-${fechaMensaje.getFullYear()}`
+    fecha: `${fechaMensaje.getFullYear()}-${mes}-${fechaMensaje.getDate()}`
 }
 
 contactform.addEventListener('focusout', verificarContactForm);
@@ -201,8 +204,6 @@ btnForm.addEventListener('click', (e) => {
 
 function verificarContactForm(e) {
     let type = e.target.id;
-    console.log(type);
-    
 
     switch (type) {
         case 'name':
@@ -213,6 +214,9 @@ function verificarContactForm(e) {
             break;
         case 'mensaje':
             mensaje(e.target)
+            break;
+        case 'ciudad':
+            ciudad(e.target)
             break;
     
         default:
@@ -228,33 +232,32 @@ function verificarContactForm(e) {
         btnForm.classList.add('disabled')
     }
 
-}
-
-function nombre(e) {
-    const nombre = e.value;
-    if (nombre.trim() === '') {
-            alert(e, 'error')
-            dataContacto.nombre = ''
-        } else {
-            alert(e, 'ok')
-            dataContacto.nombre = e.value.trim()
+    //funciones
+    function nombre(e) {
+        const nombre = e.value;
+        if (nombre.trim() === '') {
+                alert(e, 'error')
+                dataContacto.nombre = ''
+            } else {
+                alert(e, 'ok')
+                dataContacto.nombre = e.value.trim()
+            }
         }
+    
+    function email(e) {
+        const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/;
+      if(!regex.test(e.value) || e.value.trim() === ''){
+        alert(e, 'error')
+        dataContacto.email = ''
+      } else {
+        alert(e, 'ok')
+        dataContacto.email = e.value.trim()
+      }
     }
-
-function email(e) {
-    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/;
-  if(!regex.test(e.value) || e.value.trim() === ''){
-    alert(e, 'error')
-    dataContacto.email = ''
-  } else {
-    alert(e, 'ok')
-    dataContacto.email = e.value.trim()
-  }
-}
-
-function mensaje(e) {
-    const mensaje = e.value.trim();
-    if (mensaje === '') {
+    
+    function mensaje(e) {
+        const mensaje = e.value.trim();
+        if (mensaje === '') {
             alert(e, 'error')
             dataContacto.mensaje = ''
         } else {
@@ -262,6 +265,19 @@ function mensaje(e) {
             dataContacto.mensaje = mensaje;
         }
     }
+    
+    function ciudad(e) {
+        const ciudad = e.value.trim();
+        if (ciudad === '') {
+            alert(e, 'error')
+            dataContacto.ciudad = ''
+        } else {
+            alert(e, 'ok')
+            dataContacto.ciudad = ciudad;
+        }
+    }
+
+}
 
 function alert(e, tipo) {
     eliminarAlert(e);
@@ -280,14 +296,6 @@ function eliminarAlert(e) {
 function enviar() {
     contactform.classList.add('enviando')
     console.log(dataContacto);
-
-    dataContacto = {
-        nombre: '',
-        email: '',
-        mensaje: '',
-        asunto: 'gral'
-    }
-
     guardarMensaje(dataContacto)
     setTimeout(() => {
         contactform.classList.remove('enviando')
@@ -299,13 +307,29 @@ function enviar() {
         btnForm.classList.add('disabled')
         btnForm.disabled = true;
     }, 1800);
-    
-    
+
+    dataContacto = {
+        nombre: '',
+        email: '',
+        ciudad: '',
+        mensaje: '',
+        asunto: 'gral',
+        fecha: ''
+    }   
 }
 
 async function guardarMensaje(data) {
-    console.log('guarda en bd');
-    
+    console.log(data);
+    const responseCrearMsg = await fetch('/mensajes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+
+    const result = await responseCrearMsg.json()
+    console.log(result.mensaje);
 }
 
 // FAQS
