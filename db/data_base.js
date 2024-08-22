@@ -24,7 +24,7 @@ connection.connect( (err) => {
         }
         console.log('BD asegurada');
 
-        connection.changeUser({database: 'jgdisenio_ml desde alwaysdata'}, (err) =>{
+        connection.changeUser({database: 'jgdisenio_ml'}, (err) =>{
             if(err) {
                 console.error('Error al cambiar a la BD ', err)
             }
