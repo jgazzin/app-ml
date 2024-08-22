@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', ()=>{ 
     completarSelect('temas')
-    completarSelect('areas')
 })
 
 async function completarSelect(tabla) {
@@ -24,7 +23,7 @@ async function completarSelect(tabla) {
         });
 
     }
-  
+    completarSelect('areas')
 }
 
 function imprimirOption(element) {

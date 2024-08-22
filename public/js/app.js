@@ -23,9 +23,6 @@ document.querySelectorAll('.iconos-eventos i').forEach(i =>{
             completeEditInfo(cajaSettings)
         } 
 
-
-        // cajaSearch.classList.toggle('hidden')
-        // cajaSettings.classList.toggle('hidden')
     })
 })
 
